@@ -1,36 +1,52 @@
-# Personal Portfolio Website in React
+# React Website Quilombus Network
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é um portfólio pessoal desenvolvido com React, apresentando a rede Quilombus. O objetivo é fornecer uma interface moderna, responsiva e interativa para exibir projetos, habilidades e informações de contato.
 
-<img width="1266" alt="Screen Shot 2022-06-19 at 2 18 18 PM" src="https://user-images.githubusercontent.com/50160672/174933373-1ba6cadf-1c9a-48c3-aa58-984d0bd62d82.png">
+## Tecnologias Utilizadas
 
-Built using:
+- **React**: Biblioteca principal para construção da interface.
+- **Bootstrap & React-Bootstrap**: Estilização responsiva e componentes prontos.
+- **Express & CORS**: Backend simples para envio de emails e integração.
+- **Nodemailer**: Envio de emails via formulário de contato.
+- **React Router DOM & Hash Link**: Navegação entre páginas e âncoras.
+- **React Multi Carousel & Responsive Carousel**: Carrosséis de projetos e depoimentos.
+- **Mailchimp Subscribe**: Integração com newsletter.
+- **Testing Library**: Testes automatizados.
 
-- Front-end library: React
-- CSS framework: React-bootstrap
-- CSS animations library: Animate.css
+## Scripts Disponíveis
 
-In the /personal-portfolio, you can run:
+- `npm start` — Inicia o servidor de desenvolvimento React.
+- `npm run build` — Gera a versão de produção do app.
+- `npm test` — Executa os testes automatizados.
+- `npm run eject` — Eject do Create React App (irreversível).
 
-### `npm start`
+## Estrutura de Pastas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `src/` — Código-fonte principal (componentes, assets, estilos).
+- `public/` — Arquivos estáticos e HTML base.
+- `server.js` — Servidor Express para backend simples.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Como Rodar o Projeto
 
-### `npm test`
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Inicie o frontend React:
+   ```bash
+   npm start
+   ```
+3. (Opcional) Inicie o backend Express:
+   ```bash
+   node server.js
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Acesse [http://localhost:3000](http://localhost:3000) para visualizar o site.
 
-### `npm run build`
+## Contato
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para dúvidas ou sugestões, utilize o formulário de contato no site ou envie um email diretamente.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> Projeto desenvolvido para a rede Quilombus. Sinta-se livre para contribuir!
