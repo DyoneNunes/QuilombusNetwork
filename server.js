@@ -1,52 +1,51 @@
 const express = require("express");
-const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+require("dotenv").config(); // se for usar .env
 
-// server used to send send emails
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/", router);
-app.listen(5000, () => console.log("Server Running"));
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
 
+app.listen(5000, () => console.log("Server running on port 5000"));
+
+// Configurar transporte de e-mail
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: "********@gmail.com",
-    pass: ""
+    user: process.env.EMAIL_USER || "contato@quilombusnetwork.com.br",
+    pass: process.env.EMAIL_PASS || "dcgs mepv szqf dauk", // cuidado com isso
   },
 });
 
 contactEmail.verify((error) => {
   if (error) {
-    console.log(error);
+    console.log("Erro ao verificar email:", error);
   } else {
-    console.log("Ready to Send");
+    console.log("Pronto para enviar");
   }
 });
 
-router.post("/contact", (req, res) => {
-  const name = req.body.firstName + req.body.lastName;
-  const email = req.body.email;
-  const message = req.body.message;
-  const phone = req.body.phone;
+// Rota de contato
+app.post("/contact", (req, res) => {
+  const { firstName, lastName, email, phone, message } = req.body;
+
   const mail = {
-    from: name,
-    to: "********@gmail.com",
-    subject: "Contact Form Submission - Portfolio",
-    html: `<p>Name: ${name}</p>
+    from: email,
+    to: "contato@quilombusnetwork.com.br",
+    subject: "Vamos fazer um contato sobre uma proposta?",
+    html: `<p>Name: ${firstName} ${lastName}</p>
            <p>Email: ${email}</p>
            <p>Phone: ${phone}</p>
            <p>Message: ${message}</p>`,
   };
+
   contactEmail.sendMail(mail, (error) => {
     if (error) {
-      res.json(error);
+      console.error("Erro ao enviar:", error);
+      res.status(500).json({ message: "Erro ao enviar mensagem." });
     } else {
-      res.json({ code: 200, status: "Message Sent" });
+      res.status(200).json({ message: "Mensagem enviada com sucesso!" });
     }
   });
 });
